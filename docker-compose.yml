@@ -1,0 +1,9 @@
+services:
+  generator:
+    build: ./generator
+    ports:
+      - "8080:8080"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+    volumes:
+      - ./generated:/app/outputs
