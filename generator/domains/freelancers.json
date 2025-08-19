@@ -1,0 +1,106 @@
+{
+  "title": "Freelancers CRM",
+  "models": [
+    {
+      "name": "Client",
+      "table": "clients",
+      "fields": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true
+        },
+        {
+          "name": "name",
+          "type": "str"
+        },
+        {
+          "name": "email",
+          "type": "str"
+        },
+        {
+          "name": "phone",
+          "type": "str"
+        }
+      ]
+    },
+    {
+      "name": "Project",
+      "table": "projects",
+      "fields": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true
+        },
+        {
+          "name": "client_id",
+          "type": "int",
+          "fk": "Client.id"
+        },
+        {
+          "name": "name",
+          "type": "str"
+        },
+        {
+          "name": "rate_per_hour",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "TimeEntry",
+      "table": "time_entries",
+      "fields": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true
+        },
+        {
+          "name": "project_id",
+          "type": "int",
+          "fk": "Project.id"
+        },
+        {
+          "name": "hours",
+          "type": "float"
+        },
+        {
+          "name": "note",
+          "type": "str"
+        }
+      ]
+    },
+    {
+      "name": "Invoice",
+      "table": "invoices",
+      "fields": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true
+        },
+        {
+          "name": "project_id",
+          "type": "int",
+          "fk": "Project.id"
+        },
+        {
+          "name": "amount",
+          "type": "float"
+        },
+        {
+          "name": "status",
+          "type": "str"
+        }
+      ]
+    }
+  ],
+  "extras": [
+    {
+      "name": "generate_invoice",
+      "description": "Create an invoice summing time_entries * project.rate_per_hour."
+    }
+  ]
+}

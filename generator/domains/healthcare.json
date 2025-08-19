@@ -1,0 +1,98 @@
+{
+  "title": "Healthcare CRM",
+  "models": [
+    {
+      "name": "Patient",
+      "table": "patients",
+      "fields": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true
+        },
+        {
+          "name": "name",
+          "type": "str"
+        },
+        {
+          "name": "dob",
+          "type": "date"
+        },
+        {
+          "name": "gender",
+          "type": "str"
+        },
+        {
+          "name": "email",
+          "type": "str"
+        },
+        {
+          "name": "phone",
+          "type": "str"
+        }
+      ]
+    },
+    {
+      "name": "Doctor",
+      "table": "doctors",
+      "fields": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true
+        },
+        {
+          "name": "name",
+          "type": "str"
+        },
+        {
+          "name": "specialty",
+          "type": "str"
+        },
+        {
+          "name": "email",
+          "type": "str"
+        },
+        {
+          "name": "phone",
+          "type": "str"
+        }
+      ]
+    },
+    {
+      "name": "Appointment",
+      "table": "appointments",
+      "fields": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true
+        },
+        {
+          "name": "patient_id",
+          "type": "int",
+          "fk": "Patient.id"
+        },
+        {
+          "name": "doctor_id",
+          "type": "int",
+          "fk": "Doctor.id"
+        },
+        {
+          "name": "scheduled_for",
+          "type": "datetime"
+        },
+        {
+          "name": "notes",
+          "type": "str"
+        }
+      ]
+    }
+  ],
+  "extras": [
+    {
+      "name": "schedule_appointment",
+      "description": "Create an appointment if patient & doctor exist."
+    }
+  ]
+}

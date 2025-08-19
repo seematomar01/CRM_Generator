@@ -1,0 +1,74 @@
+{
+  "title": "Education CRM",
+  "models": [
+    {
+      "name": "Student",
+      "table": "students",
+      "fields": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true
+        },
+        {
+          "name": "name",
+          "type": "str"
+        },
+        {
+          "name": "email",
+          "type": "str"
+        }
+      ]
+    },
+    {
+      "name": "Course",
+      "table": "courses",
+      "fields": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true
+        },
+        {
+          "name": "title",
+          "type": "str"
+        },
+        {
+          "name": "code",
+          "type": "str"
+        }
+      ]
+    },
+    {
+      "name": "Admission",
+      "table": "admissions",
+      "fields": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true
+        },
+        {
+          "name": "student_id",
+          "type": "int",
+          "fk": "Student.id"
+        },
+        {
+          "name": "course_id",
+          "type": "int",
+          "fk": "Course.id"
+        },
+        {
+          "name": "status",
+          "type": "str"
+        }
+      ]
+    }
+  ],
+  "extras": [
+    {
+      "name": "enroll_student",
+      "description": "Enroll a student into a course (create Admission)."
+    }
+  ]
+}

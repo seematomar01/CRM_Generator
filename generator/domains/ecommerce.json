@@ -1,0 +1,87 @@
+{
+  "title": "E-commerce CRM",
+  "models": [
+    {
+      "name": "Customer",
+      "table": "customers",
+      "fields": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true
+        },
+        {
+          "name": "name",
+          "type": "str"
+        },
+        {
+          "name": "email",
+          "type": "str"
+        },
+        {
+          "name": "phone",
+          "type": "str"
+        }
+      ]
+    },
+    {
+      "name": "Product",
+      "table": "products",
+      "fields": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true
+        },
+        {
+          "name": "name",
+          "type": "str"
+        },
+        {
+          "name": "price",
+          "type": "float"
+        },
+        {
+          "name": "stock",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Order",
+      "table": "orders",
+      "fields": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true
+        },
+        {
+          "name": "customer_id",
+          "type": "int",
+          "fk": "Customer.id"
+        },
+        {
+          "name": "product_id",
+          "type": "int",
+          "fk": "Product.id"
+        },
+        {
+          "name": "quantity",
+          "type": "int"
+        },
+        {
+          "name": "total",
+          "type": "float",
+          "nullable": true
+        }
+      ]
+    }
+  ],
+  "extras": [
+    {
+      "name": "compute_order_total",
+      "description": "Compute and set order total = quantity * product.price."
+    }
+  ]
+}

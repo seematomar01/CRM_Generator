@@ -1,0 +1,10 @@
+from sqlmodel import SQLModel, Field
+from typing import Optional
+from datetime import date, datetime
+
+{% for m in models %}
+class {{ m.name }}(SQLModel, table=True):
+    {% for f in m.fields %}
+    {{ f.name }}: {{ f.type_hint }}{% if f.pk %} = Field(default=None, primary_key=True){% elif f.fk %} = Field(foreign_key="{{ f.fk_table }}.{{ f.fk_col }}"){% elif f.nullable %} | None = None{% endif %}
+    {% endfor %}
+{% endfor %}

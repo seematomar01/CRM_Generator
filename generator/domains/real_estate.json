@@ -1,0 +1,95 @@
+{
+  "title": "Real Estate CRM",
+  "models": [
+    {
+      "name": "Property",
+      "table": "properties",
+      "fields": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true
+        },
+        {
+          "name": "address",
+          "type": "str"
+        },
+        {
+          "name": "city",
+          "type": "str"
+        },
+        {
+          "name": "price",
+          "type": "float"
+        },
+        {
+          "name": "status",
+          "type": "str"
+        }
+      ]
+    },
+    {
+      "name": "Agent",
+      "table": "agents",
+      "fields": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true
+        },
+        {
+          "name": "name",
+          "type": "str"
+        },
+        {
+          "name": "email",
+          "type": "str"
+        },
+        {
+          "name": "phone",
+          "type": "str"
+        }
+      ]
+    },
+    {
+      "name": "Lead",
+      "table": "leads",
+      "fields": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true
+        },
+        {
+          "name": "name",
+          "type": "str"
+        },
+        {
+          "name": "email",
+          "type": "str"
+        },
+        {
+          "name": "phone",
+          "type": "str"
+        },
+        {
+          "name": "interested_property_id",
+          "type": "int",
+          "fk": "Property.id"
+        },
+        {
+          "name": "assigned_agent_id",
+          "type": "int",
+          "nullable": true,
+          "fk": "Agent.id"
+        }
+      ]
+    }
+  ],
+  "extras": [
+    {
+      "name": "assign_lead",
+      "description": "Assign a lead to an agent."
+    }
+  ]
+}
